@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -13,6 +13,7 @@ import SnackbarContent from "@mui/material/SnackbarContent";
 import { ThemeProvider } from "@mui/material/styles";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import GetAppIcon from "@mui/icons-material/GetApp";
+import InstallDesktopIcon from "@mui/icons-material/InstallDesktop";
 
 import { radioColors, theme } from "./commonFunctions.js"; // import your theme
 
@@ -22,6 +23,33 @@ import LanguageSwitcher from "./LanguageSwitcher.jsx";
 function NavBar() {
   const { t } = useTranslation();
   const [urlSnackbar, setUrlSnackbar] = useState(false);
+  const [installPrompt, setInstallPrompt] = useState(null);
+
+  useEffect(() => {
+    function handleInstallPrompt(event) {
+      event.preventDefault();
+      setInstallPrompt(event);
+    }
+
+    function handleAppInstalled() {
+      setInstallPrompt(null);
+    }
+
+    window.addEventListener("beforeinstallprompt", handleInstallPrompt);
+    window.addEventListener("appinstalled", handleAppInstalled);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleInstallPrompt);
+      window.removeEventListener("appinstalled", handleAppInstalled);
+    };
+  }, []);
+
+  async function installApp() {
+    if (!installPrompt) return;
+
+    await installPrompt.prompt();
+    setInstallPrompt(null);
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -82,6 +110,13 @@ function NavBar() {
             </Stack>
             <Stack spacing={1} direction="row" useFlexGap sx={{ alignItems: "center", justifyContent: "flex-end", flexWrap: "wrap", minWidth: 0 }}>
               <LanguageSwitcher />
+              {installPrompt ? (
+                <Tooltip title={t("nav.install")} placement="bottom">
+                  <IconButton aria-label={t("nav.installAria")} color="bland" onClick={installApp}>
+                    <InstallDesktopIcon sx={{ fontSize: 30, color: radioColors.accent }} />
+                  </IconButton>
+                </Tooltip>
+              ) : null}
               <Tooltip title={t("nav.copyUrl")} placement="bottom">
                 <IconButton
                   aria-label={t("nav.copyUrlAria")}

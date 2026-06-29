@@ -18,6 +18,8 @@
   },
   "nav": {
     "title": "9M2PJU SMITH CHART",
+    "install": "Instalar app",
+    "installAria": "Instalar 9M2PJU Smith Chart",
     "copyUrl": "Copiar URL para compartir",
     "copyUrlAria": "Copiar URL para compartir al portapapeles",
     "reset": "Restablecer estado inicial",

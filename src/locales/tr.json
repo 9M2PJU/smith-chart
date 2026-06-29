@@ -18,6 +18,8 @@
   },
   "nav": {
     "title": "9M2PJU SMITH CHART",
+    "install": "Uygulamayı yükle",
+    "installAria": "9M2PJU Smith Chart uygulamasını yükle",
     "copyUrl": "Paylaşılabilir URL'yi kopyala",
     "copyUrlAria": "Paylaşılabilir URL'yi panoya kopyala",
     "reset": "Başlangıç durumuna sıfırla",

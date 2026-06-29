@@ -18,6 +18,8 @@
   },
   "nav": {
     "title": "9M2PJU SMITH CHART",
+    "install": "アプリをインストール",
+    "installAria": "9M2PJU Smith Chartをインストール",
     "copyUrl": "共有用URLをコピー",
     "copyUrlAria": "共有用URLをクリップボードにコピー",
     "reset": "初期状態にリセット",

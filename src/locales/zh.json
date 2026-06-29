@@ -18,6 +18,8 @@
   },
   "nav": {
     "title": "9M2PJU SMITH CHART",
+    "install": "安装应用",
+    "installAria": "安装 9M2PJU Smith Chart",
     "copyUrl": "复制可分享链接",
     "copyUrlAria": "将可分享链接复制到剪贴板",
     "reset": "恢复初始状态",
