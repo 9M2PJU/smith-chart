@@ -15,7 +15,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import GetAppIcon from "@mui/icons-material/GetApp";
 
-import { theme } from "./commonFunctions.js"; // import your theme
+import { radioColors, theme } from "./commonFunctions.js"; // import your theme
 
 import SmithChartSvg from "./assets/smith-chart-icon.svg"; // import your SVG file
 import Home from "./assets/home.svg"; // import your SVG file
@@ -37,7 +37,7 @@ function NavBar() {
         <SnackbarContent
           message={t("nav.urlCopied")}
           sx={{
-            backgroundColor: "#2196f3",
+            backgroundColor: radioColors.panel,
             color: "#fff",
             cursor: "pointer", // Indicate clickable
             maxWidth: 200,
@@ -45,7 +45,7 @@ function NavBar() {
         />
       </Snackbar>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" sx={{ backgroundColor: "rgb(37, 50, 64)", py: 1 }}>
+        <AppBar position="static" sx={{ backgroundColor: radioColors.panel, py: 1, borderBottom: `3px solid ${radioColors.accent}` }}>
           <Toolbar
             style={{ minHeight: 0 }}
             sx={{
@@ -76,7 +76,7 @@ function NavBar() {
                     });
                   }}
                 >
-                  <GetAppIcon sx={{ fontSize: 30, color: "rgb(184, 255, 241)" }} />
+                  <GetAppIcon sx={{ fontSize: 30, color: radioColors.accent }} />
                 </IconButton>
               </Tooltip>
               <Tooltip title={t("nav.reset")} placement="bottom">
@@ -87,7 +87,7 @@ function NavBar() {
                     window.location.href = window.location.origin;
                   }}
                 >
-                  <RestartAltIcon sx={{ fontSize: 30, color: "rgb(184, 255, 241)" }} />
+                  <RestartAltIcon sx={{ fontSize: 30, color: radioColors.accent }} />
                 </IconButton>
               </Tooltip>
             </Stack>

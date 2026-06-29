@@ -13,6 +13,20 @@ export const arcColors = [
   "#17becf", // blue-teal
 ];
 
+export const radioColors = {
+  panel: "#17212b",
+  panelSoft: "#23303a",
+  page: "#d8dfd5",
+  surface: "#f7f8f2",
+  field: "#eef4e9",
+  accent: "#f4b942",
+  accentDark: "#a36a00",
+  text: "#17212b",
+  mutedText: "#56616a",
+  border: "#a8b0a3",
+  danger: "#6f1d1b",
+};
+
 /** Color for one impedance arc dp (Smith chart Z traces). */
 export function impedanceArcColor({ dp, arcCount, cumulatedDP = 0, sparamType = null }) {
   const isS1pLoadTermPassThrough = sparamType === "s1p" && dp === arcCount - 1 && arcCount > 1;
@@ -67,11 +81,19 @@ export function complex_add(a, b) {
 
 export const theme = createTheme({
   palette: {
+    primary: {
+      main: radioColors.panel,
+      contrastText: "#fff",
+    },
+    secondary: {
+      main: radioColors.accent,
+      contrastText: radioColors.panel,
+    },
     bland: {
-      main: "#fff",
-      light: "#dedfe0",
-      dark: "#dedfe0",
-      contrastText: "#242105",
+      main: radioColors.surface,
+      light: "#fffdf6",
+      dark: "#d7d9cf",
+      contrastText: radioColors.panel,
     },
   },
   breakpoints: {

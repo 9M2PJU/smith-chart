@@ -20,7 +20,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { frequencyUnits, parseInput, polarToRectangular, rectangularToPolar, unitConverter } from "./commonFunctions";
+import { frequencyUnits, parseInput, polarToRectangular, radioColors, rectangularToPolar, unitConverter } from "./commonFunctions";
 
 function setValue(value, field, setX) {
   setX((z) => {
@@ -65,7 +65,7 @@ function DisabledOverlay({ disabled, disabledText }) {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          backgroundColor: "rgba(69, 19, 19, 1)",
+          backgroundColor: radioColors.danger,
           padding: "4px 8px",
           borderRadius: 1,
           fontWeight: "bold",
@@ -194,7 +194,7 @@ export default function Settings({ settings, setSettings, usedF, chosenSparamete
           />
         </Grid>
         <Grid size={12}>
-          <Paper variant="outlined" sx={{ p: 1.5, backgroundColor: "#effffd" }}>
+          <Paper variant="outlined" sx={{ p: 1.5, backgroundColor: radioColors.field, borderColor: radioColors.border }}>
             <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: "bold" }}>
               Amateur radio
             </Typography>
@@ -285,7 +285,7 @@ function CustomMarkersTable({ settings, setSettings }) {
   const [zMarkersInt, setZMarkersInt] = useState([25, 25]);
 
   return (
-    <TableContainer component={Paper} variant="outlined" sx={{ px: 1, py: 1, backgroundColor: "#effffd" }}>
+    <TableContainer component={Paper} variant="outlined" sx={{ px: 1, py: 1, backgroundColor: radioColors.field, borderColor: radioColors.border }}>
       <Typography variant="h7" component="div" sx={{ pb: 0.5, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         {t("settings.markersTitle")}
         <span>
@@ -302,16 +302,16 @@ function CustomMarkersTable({ settings, setSettings }) {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell align="center" sx={{ background: "rgb(37, 50, 64)", color: "white" }}>
+            <TableCell align="center" sx={{ background: radioColors.panel, color: "white" }}>
               {t("common.name")}
             </TableCell>
-            <TableCell align="center" sx={{ background: "rgb(37, 50, 64)", color: "white" }}>
+            <TableCell align="center" sx={{ background: radioColors.panel, color: "white" }}>
               {polar ? t("settings.magnitude") : t("settings.real")}
             </TableCell>
-            <TableCell align="center" sx={{ background: "rgb(37, 50, 64)", color: "white" }}>
+            <TableCell align="center" sx={{ background: radioColors.panel, color: "white" }}>
               {polar ? t("settings.angleDeg") : t("settings.imaginary")}
             </TableCell>
-            <TableCell align="center" sx={{ background: "rgb(37, 50, 64)", color: "white" }}>
+            <TableCell align="center" sx={{ background: radioColors.panel, color: "white" }}>
               {t("common.add")}
             </TableCell>
           </TableRow>
@@ -397,7 +397,7 @@ function CustomQTable({ dB, QInt, maxValue, minValue, setQInt, settings, setSett
       sx={{ display: "flex", position: "relative", opacity: disabled ? 0.5 : 1, pointerEvents: disabled ? "none" : "auto" }}
     >
       <DisabledOverlay disabled={disabled} disabledText={disabledText} />
-      <TableContainer component={Paper} variant="outlined" sx={{ px: 1, py: 1, backgroundColor: "#effffd" }}>
+      <TableContainer component={Paper} variant="outlined" sx={{ px: 1, py: 1, backgroundColor: radioColors.field, borderColor: radioColors.border }}>
         <Typography variant="h7" component="div" sx={{ pb: 0.5, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           {title}
           {maxValue ? t("settings.maxDb", { v: maxValue.toPrecision(3) }) : minValue ? t("settings.minDb", { v: minValue.toPrecision(3) }) : ""}
@@ -417,10 +417,10 @@ function CustomQTable({ dB, QInt, maxValue, minValue, setQInt, settings, setSett
         <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell align="center" sx={{ background: "rgb(37, 50, 64)", color: "white" }}>
+              <TableCell align="center" sx={{ background: radioColors.panel, color: "white" }}>
                 {t("common.value")}
               </TableCell>
-              <TableCell align="center" sx={{ background: "rgb(37, 50, 64)", color: "white" }}>
+              <TableCell align="center" sx={{ background: radioColors.panel, color: "white" }}>
                 {t("common.add")}
               </TableCell>
             </TableRow>

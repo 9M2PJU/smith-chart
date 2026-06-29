@@ -23,7 +23,7 @@ import Box from "@mui/material/Box";
 import Snackbar from "@mui/material/Snackbar";
 import SnackbarContent from "@mui/material/SnackbarContent";
 
-import { processImpedance, parseInput, reflToZ, polarToRectangular, unitConverter, impedanceArcColor } from "./commonFunctions.js";
+import { processImpedance, parseInput, reflToZ, polarToRectangular, radioColors, unitConverter, impedanceArcColor } from "./commonFunctions.js";
 import { sparamNoiseCircles, sparamGainCircles, stabilityCircles } from "./sparam.js";
 
 // Dedicated S-parameter stroke colors (Okabe–Ito–style); avoids clashing with arcColors used for Z traces
@@ -949,7 +949,7 @@ function Graph({
         <SnackbarContent
           message={t("graph.stabilityCirclesToast")}
           sx={{
-            backgroundColor: "#2196f3",
+            backgroundColor: radioColors.panel,
             color: "#fff",
             maxWidth: 420,
           }}

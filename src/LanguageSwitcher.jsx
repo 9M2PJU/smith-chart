@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import { radioColors } from "./commonFunctions.js";
 import { changeLanguage, supportedLanguages } from "./i18n.js";
 
 function LanguageOption({ flag, label }) {
@@ -40,19 +41,19 @@ export default function LanguageSwitcher() {
         inputProps={{ "aria-label": t("language.label") }}
         renderValue={() => <LanguageOption flag={currentFlag} label={currentLabel} />}
         sx={{
-          color: "rgb(184, 255, 241)",
+          color: radioColors.accent,
           fontSize: "0.8125rem",
           "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "rgba(184, 255, 241, 0.5)",
+            borderColor: "rgba(244, 185, 66, 0.55)",
           },
           "&:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: "rgb(184, 255, 241)",
+            borderColor: radioColors.accent,
           },
           "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: "rgb(184, 255, 241)",
+            borderColor: radioColors.accent,
           },
           "& .MuiSvgIcon-root": {
-            color: "rgb(184, 255, 241)",
+            color: radioColors.accent,
           },
         }}
       >

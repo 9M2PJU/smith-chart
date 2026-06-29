@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: rgb(184, 255, 241);
+  color: #17212b;
+  background-color: #d8dfd5;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,7 +18,7 @@ body {
 }
 
 .circuitDrawing:nth-child(even) {
-  background-color: rgb(247, 247, 247); /* Change this to your desired color */
+  background-color: #eef4e9;
 }
 .hoverDp {
   stroke: red;

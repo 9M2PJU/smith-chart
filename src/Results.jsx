@@ -7,18 +7,18 @@ import UplotReact from "uplot-react";
 import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import { processImpedance, rectangularToPolar, unitConverter, zToRefl } from "./commonFunctions";
+import { processImpedance, radioColors, rectangularToPolar, unitConverter, zToRefl } from "./commonFunctions";
 
 function ImpedanceRes({ type, zStr, zPolarStr }) {
   return (
     <>
       <Box
         sx={{
-          border: "1px solid #ccc",
+          border: `1px solid ${radioColors.border}`,
           borderRadius: 1,
           padding: 1,
           width: "155px",
-          backgroundColor: "rgb(37, 50, 64)",
+          backgroundColor: radioColors.panel,
           color: "white",
         }}
       >
@@ -26,7 +26,7 @@ function ImpedanceRes({ type, zStr, zPolarStr }) {
       </Box>
       <Box
         sx={{
-          border: "1px solid #ccc",
+          border: `1px solid ${radioColors.border}`,
           borderRadius: 1,
           padding: 1,
           flex: 1,
@@ -36,7 +36,7 @@ function ImpedanceRes({ type, zStr, zPolarStr }) {
       </Box>
       <Box
         sx={{
-          border: "1px solid #ccc",
+          border: `1px solid ${radioColors.border}`,
           borderRadius: 1,
           padding: 1,
           flex: 1,
@@ -53,11 +53,11 @@ function MiniRes({ type, res }) {
     <>
       <Box
         sx={{
-          border: "1px solid #ccc",
+          border: `1px solid ${radioColors.border}`,
           borderRadius: 1,
           padding: 1,
           width: "65px",
-          backgroundColor: "rgb(37, 50, 64)",
+          backgroundColor: radioColors.panel,
           color: "white",
         }}
       >
@@ -65,7 +65,7 @@ function MiniRes({ type, res }) {
       </Box>
       <Box
         sx={{
-          border: "1px solid #ccc",
+          border: `1px solid ${radioColors.border}`,
           borderRadius: 1,
           padding: 1,
           mr: 0.5,
@@ -483,8 +483,8 @@ function getAntennaSummary(nominalSpan, zo, freqUnit, frequency) {
 function AntennaMetric({ label, value }) {
   return (
     <Grid size={{ xs: 12, sm: 6 }}>
-      <Box sx={{ border: "1px solid #ccc", borderRadius: 1, p: 1, height: "100%" }}>
-        <Typography variant="caption" sx={{ color: "rgb(82, 91, 101)", display: "block" }}>
+      <Box sx={{ border: `1px solid ${radioColors.border}`, borderRadius: 1, p: 1, height: "100%", backgroundColor: radioColors.surface }}>
+        <Typography variant="caption" sx={{ color: radioColors.mutedText, display: "block" }}>
           {label}
         </Typography>
         <Typography variant="body2" sx={{ overflowWrap: "anywhere" }}>
@@ -499,7 +499,7 @@ function AntennaSummary({ summary }) {
   if (!summary) return null;
   return (
     <Grid size={12}>
-      <Box sx={{ border: "1px solid #ccc", borderRadius: 1, p: 1.5, mt: 1, backgroundColor: "#effffd" }}>
+      <Box sx={{ border: `1px solid ${radioColors.border}`, borderRadius: 1, p: 1.5, mt: 1, backgroundColor: radioColors.field }}>
         <Typography variant="h6" sx={{ mb: 1 }}>
           Antenna
         </Typography>

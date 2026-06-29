@@ -22,7 +22,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 import { syncObjectToUrl, updateObjectFromUrl } from "./urlFunctions.js"; // Import the syncObjectToUrl function
-import { theme, convertSettingsToFloat } from "./commonFunctions.js";
+import { radioColors, theme, convertSettingsToFloat } from "./commonFunctions.js";
 import { circuitComponents } from "./circuitComponents.js";
 
 import { allImpedanceCalculations } from "./impedanceFunctions.js";
@@ -142,7 +142,7 @@ function App() {
         <SnackbarContent
           message={t("app.urlLoadedSnackbar")}
           sx={{
-            backgroundColor: "#2196f3",
+            backgroundColor: radioColors.panel,
             color: "#fff",
             cursor: "pointer",
             maxWidth: 200,
@@ -158,7 +158,7 @@ function App() {
           alignItems: "center",
           justifyContent: "space-between",
           gap: 1,
-          color: "rgb(37, 50, 64)",
+          color: radioColors.text,
           mx: 3,
           mt: 1,
         }}
