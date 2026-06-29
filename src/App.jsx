@@ -25,7 +25,6 @@ import Graph from "./Graph.jsx";
 import Results from "./Results.jsx";
 import Settings from "./Settings.jsx";
 import Equations from "./Equations.jsx";
-import ReleaseNotes from "./ReleaseNotes.jsx";
 import Tutorials from "./Tutorials.jsx";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
@@ -316,22 +315,19 @@ function App() {
             <Equations />
           </Grid>
           <Grid size={12}>
-            <ReleaseNotes />
-          </Grid>
-          <Grid size={12}>
             <Card>
               <CardContent>
-                <Link
-                  component="button"
-                  type="button"
-                  variant="body1"
-                  onClick={() => setHelperModalOpen(true)}
-                  color="primary"
-                  underline="always"
-                  sx={{ verticalAlign: "baseline", cursor: "pointer", fontFamily: "inherit" }}
-                >
-                  {t("app.helperButton")}
-                </Link>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+                  <Button variant="outlined" onClick={() => setHelperModalOpen(true)}>
+                    {t("app.helperButton")}
+                  </Button>
+                  <Button variant="outlined" href="https://trgmc.net/" target="_blank" rel="noopener noreferrer">
+                    TRGMC
+                  </Button>
+                  <Button variant="outlined" href="https://onlinecircuitsolver.com/" target="_blank" rel="noopener noreferrer">
+                    Online Circuit Solver
+                  </Button>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
