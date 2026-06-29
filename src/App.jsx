@@ -247,6 +247,7 @@ function App() {
                 <Settings
                   settings={settings}
                   setSettings={setSettings}
+                  setUserCircuit={setUserCircuit}
                   usedF={numericalFrequency}
                   chosenSparameter={chosenSparameter}
                   chosenNoiseParameter={chosenNoiseParameter}

@@ -41,19 +41,20 @@ Applying a band preset sets a representative frequency, frequency span, 50 ohm r
 
 ## Antenna Samples
 
-Antenna sample presets were added as practical starting points. Each sample sets the frequency range and places a representative impedance marker on the Smith chart.
+Antenna and matching sample presets were added as practical starting points. Each sample sets the frequency range and places one or more representative impedance markers on the Smith chart.
 
-Current samples:
+Sample categories include:
 
-- 20 m resonant dipole
-- 40 m low dipole
-- 40 m loaded vertical
-- 20 m off-center-fed
-- 20 m end-fed/random wire
-- 40 m small magnetic loop
-- 2 m quarter-wave whip
+- HF wire antennas such as half-wave dipoles, inverted V antennas, folded dipoles, off-center-fed dipoles, G5RV/ZS6BKW-style doublets, ladder-line doublets, end-fed half-wave antennas, random wires, and terminated folded dipoles.
+- Vertical antennas such as quarter-wave ground planes, elevated-radial verticals, loaded verticals, mobile whips, 5/8 wave verticals, trapped verticals, and inverted L antennas.
+- Loop antennas such as full-wave loops, delta loops, quad loops, small magnetic loops, and tuned magnetic loops.
+- Beam antennas such as Yagi driven elements, Yagi hairpin examples, Moxon rectangles, hexbeams, and quad driven loops.
+- VHF/UHF antennas such as quarter-wave whips, half-wave verticals, J-pole match points, Slim Jim high-impedance sections, and collinear verticals.
+- Matching transformer examples such as 1:1 chokes/current baluns, 2:1 matching, 4:1 baluns, 6:1 matching, 9:1 random-wire ununs, 49:1 EFHW ununs, 64:1 high-impedance end-fed ununs, and 4:1 balanced tuner inputs.
 
-These are approximate educational examples, not guaranteed values for every real antenna setup. Actual impedance depends on height, ground, feedline, nearby objects, construction, and measurement method.
+Balun and unun samples include both the approximate raw antenna/feedpoint impedance and the approximate transformed impedance so the user can see how the impedance ratio moves points on the Smith chart.
+
+These are approximate educational examples, not guaranteed values for every real antenna setup. Actual impedance depends on height, ground, feedline, nearby objects, construction, transformer design, losses, and measurement method.
 
 ## Results Improvements
 
