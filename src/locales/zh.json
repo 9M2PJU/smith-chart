@@ -32,11 +32,6 @@
     "plotSparam": "绘制原始 S 参数数据",
     "plotImpedanceS1p": "绘制看向 DP1 的反射系数",
     "plotImpedanceS2p": "绘制系统增益与噪声",
-    "helperButton": "OnlineSmithChart 助手",
-    "helperModalTitle": "AI 助手（使用您自己的对话）",
-    "helperModalIntro": "<chatgptProject>共享的 ChatGPT 项目</chatgptProject>人数有限。请改为：复制下方说明，在 ChatGPT、Claude 或其他助手中新建对话，并将其作为第一条消息粘贴发送。",
-    "helperCopyButton": "将说明复制到剪贴板",
-    "helperCopiedSnackbar": "已复制。请将其作为第一条消息粘贴到您的助手中。",
     "layoutToggleAria": "调整电路和图表布局",
     "layoutSideBySide": "并排",
     "layoutStacked": "堆叠"

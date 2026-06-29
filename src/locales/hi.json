@@ -32,11 +32,6 @@
     "plotSparam": "कच्चा S-पैरामीटर डेटा प्लॉट करें",
     "plotImpedanceS1p": "DP1 में देखने पर प्रतिबिंब गुणांक प्लॉट करें",
     "plotImpedanceS2p": "सिस्टम गेन और शोर प्लॉट करें",
-    "helperButton": "OnlineSmithChart सहायक",
-    "helperModalTitle": "AI सहायक (अपनी चैट)",
-    "helperModalIntro": "<chatgptProject>साझा ChatGPT प्रोजेक्ट</chatgptProject> में केवल कुछ उपयोगकर्ता हो सकते हैं। इसके बजाय: नीचे दिए निर्देश कॉपी करें, ChatGPT, Claude या किसी अन्य सहायक में नई चैट खोलें और उन्हें पहला संदेश चिपकाएँ।",
-    "helperCopyButton": "निर्देश क्लिपबोर्ड पर कॉपी करें",
-    "helperCopiedSnackbar": "कॉपी हो गया। इन्हें अपने सहायक में पहला संदेश चिपकाएँ।",
     "layoutToggleAria": "सर्किट और चार्ट लेआउट समायोजित करें",
     "layoutSideBySide": "साथ-साथ",
     "layoutStacked": "ढेर"

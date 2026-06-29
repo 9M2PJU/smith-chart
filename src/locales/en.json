@@ -32,11 +32,6 @@
     "plotSparam": "Plot Raw S-Parameter Data",
     "plotImpedanceS1p": "Plot reflection coefficient looking from termination",
     "plotImpedanceS2p": "Plot System Gain & Noise",
-    "helperButton": "OnlineSmithChart Helper",
-    "helperModalTitle": "AI helper (your own chat)",
-    "helperModalIntro": "The <chatgptProject>shared ChatGPT project</chatgptProject> only allows a few users. Instead: copy the instructions below, open a new chat in ChatGPT, Claude, or another assistant, and paste them as your first message.",
-    "helperCopyButton": "Copy instructions to clipboard",
-    "helperCopiedSnackbar": "Copied. Paste into your assistant as the first message.",
     "layoutToggleAria": "Adjust circuit and chart layout",
     "layoutSideBySide": "Side by side",
     "layoutStacked": "Stacked"

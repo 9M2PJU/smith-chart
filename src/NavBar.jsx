@@ -99,12 +99,6 @@ function NavBar() {
               <Button variant="contained" color="bland" component="a" href="https://onlinesmithchart.com" size="small">
                 {t("nav.smithChart")}
               </Button>
-              <Button variant="contained" color="bland" component="a" href="https://onlinecircuitsolver.com" size="small">
-                {t("nav.circuitSolver")}
-              </Button>
-              <Button variant="contained" color="bland" component="a" href="https://trgmc.net" size="small">
-                TRGMC
-              </Button>
             </Stack>
           </Toolbar>
         </AppBar>

@@ -32,11 +32,6 @@
     "plotSparam": "Tracer les paramètres S bruts",
     "plotImpedanceS1p": "Tracer le coefficient de réflexion vu à DP1",
     "plotImpedanceS2p": "Tracer le gain et le bruit du système",
-    "helperButton": "Assistant OnlineSmithChart",
-    "helperModalTitle": "Assistant IA (votre propre chat)",
-    "helperModalIntro": "Le <chatgptProject>projet ChatGPT partagé</chatgptProject> n’accepte que quelques utilisateurs. À la place : copiez les instructions ci-dessous, ouvrez un nouveau chat dans ChatGPT, Claude ou un autre assistant, et collez-les comme premier message.",
-    "helperCopyButton": "Copier les instructions dans le presse-papiers",
-    "helperCopiedSnackbar": "Copié. Collez dans votre assistant comme premier message.",
     "layoutToggleAria": "Ajuster la disposition du circuit et de l’abaque",
     "layoutSideBySide": "Côte à côte",
     "layoutStacked": "Empilé"
