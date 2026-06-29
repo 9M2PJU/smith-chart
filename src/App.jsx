@@ -1,4 +1,3 @@
-/* global gtag */
 import { useState, useEffect, useMemo } from "react";
 import { useTranslation, Trans } from "react-i18next";
 import Box from "@mui/material/Box";
@@ -21,7 +20,6 @@ import CardContent from "@mui/material/CardContent";
 import ContentCopy from "@mui/icons-material/ContentCopy";
 import { ThemeProvider } from "@mui/material/styles";
 import NavBar from "./NavBar.jsx";
-import Footer from "./Footer.jsx";
 import Circuit from "./Circuit.jsx";
 import Graph from "./Graph.jsx";
 import Results from "./Results.jsx";
@@ -29,7 +27,6 @@ import Settings from "./Settings.jsx";
 import Equations from "./Equations.jsx";
 import ReleaseNotes from "./ReleaseNotes.jsx";
 import Tutorials from "./Tutorials.jsx";
-import { Comments } from "@hyvor/hyvor-talk-react";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
@@ -324,37 +321,22 @@ function App() {
           <Grid size={12}>
             <Card>
               <CardContent>
-                <Box sx={{ mb: 2 }}>
-                  <Link
-                    component="button"
-                    type="button"
-                    variant="body1"
-                    onClick={() => setHelperModalOpen(true)}
-                    color="primary"
-                    underline="always"
-                    sx={{ verticalAlign: "baseline", cursor: "pointer", fontFamily: "inherit" }}
-                  >
-                    {t("app.helperButton")}
-                  </Link>
-                </Box>
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
-                  <Typography>{t("app.commentsTitle")}</Typography>
-                  <Link
-                    href="https://www.microwave-master.com/contact-us/"
-                    onClick={() => gtag("event", "click_microwave_maser")}
-                    target="_blank"
-                    color="inherit"
-                  >
-                    {t("app.supportLink")}
-                  </Link>
-                </div>
-                {!import.meta.env.DEV && <Comments website-id="12282" page-id="/smith_chart/" />}
+                <Link
+                  component="button"
+                  type="button"
+                  variant="body1"
+                  onClick={() => setHelperModalOpen(true)}
+                  color="primary"
+                  underline="always"
+                  sx={{ verticalAlign: "baseline", cursor: "pointer", fontFamily: "inherit" }}
+                >
+                  {t("app.helperButton")}
+                </Link>
               </CardContent>
             </Card>
           </Grid>
         </Grid>
       </Box>
-      <Footer />
     </ThemeProvider>
   );
 }

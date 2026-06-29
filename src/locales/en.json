@@ -32,8 +32,6 @@
     "plotSparam": "Plot Raw S-Parameter Data",
     "plotImpedanceS1p": "Plot reflection coefficient looking from termination",
     "plotImpedanceS2p": "Plot System Gain & Noise",
-    "commentsTitle": "Comment section below",
-    "supportLink": "Get professional support from Microwave Master here",
     "helperButton": "OnlineSmithChart Helper",
     "helperModalTitle": "AI helper (your own chat)",
     "helperModalIntro": "The <chatgptProject>shared ChatGPT project</chatgptProject> only allows a few users. Instead: copy the instructions below, open a new chat in ChatGPT, Claude, or another assistant, and paste them as your first message.",
@@ -42,10 +40,6 @@
     "layoutToggleAria": "Adjust circuit and chart layout",
     "layoutSideBySide": "Side by side",
     "layoutStacked": "Stacked"
-  },
-  "footer": {
-    "license": "© {{year}} Will Kelsey. This work is licensed under a Creative Commons Attribution 4.0 International License. You may not resell this tool",
-    "version": "v2.0"
   },
   "language": {
     "label": "Language"

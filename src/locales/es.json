@@ -32,8 +32,6 @@
     "plotSparam": "Trazar datos brutos de parámetros S",
     "plotImpedanceS1p": "Trazar coeficiente de reflexión hacia DP1",
     "plotImpedanceS2p": "Trazar ganancia y ruido del sistema",
-    "commentsTitle": "Sección de comentarios debajo",
-    "supportLink": "Soporte profesional con Microwave Master",
     "helperButton": "Asistente OnlineSmithChart",
     "helperModalTitle": "Asistente de IA (tu propio chat)",
     "helperModalIntro": "El <chatgptProject>proyecto compartido de ChatGPT</chatgptProject> solo admite unos pocos usuarios. Haz esto: copia las instrucciones de abajo, abre un chat nuevo en ChatGPT, Claude u otro asistente y pégalo como primer mensaje.",
@@ -42,10 +40,6 @@
     "layoutToggleAria": "Ajustar la disposición del circuito y el diagrama",
     "layoutSideBySide": "Lado a lado",
     "layoutStacked": "Apilado"
-  },
-  "footer": {
-    "license": "© {{year}} Will Kelsey. Esta obra tiene licencia Creative Commons Atribución 4.0 Internacional. No puede revender esta herramienta",
-    "version": "v2.0"
   },
   "language": {
     "label": "Idioma"

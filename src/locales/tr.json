@@ -32,8 +32,6 @@
     "plotSparam": "Ham S-parametre verisini çiz",
     "plotImpedanceS1p": "DP1’e bakan yansıma katsayısını çiz",
     "plotImpedanceS2p": "Sistem kazancı ve gürültüyü çiz",
-    "commentsTitle": "Aşağıda yorum bölümü",
-    "supportLink": "Microwave Master’dan profesyonel destek alın",
     "helperButton": "OnlineSmithChart Yardımcısı",
     "helperModalTitle": "AI yardımcı (kendi sohbetiniz)",
     "helperModalIntro": "<chatgptProject>Paylaşılan ChatGPT projesi</chatgptProject> yalnızca birkaç kullanıcıya izin verir. Bunun yerine: aşağıdaki yönergeleri kopyalayın, ChatGPT, Claude veya başka bir asistanda yeni bir sohbet açın ve ilk mesajınız olarak yapıştırın.",
@@ -42,10 +40,6 @@
     "layoutToggleAria": "Devre ve grafik düzenini ayarla",
     "layoutSideBySide": "Yan yana",
     "layoutStacked": "Üst üste"
-  },
-  "footer": {
-    "license": "© {{year}} Will Kelsey. Bu çalışma Creative Commons Atıf 4.0 Uluslararası Lisansı altındadır. Bu aracı yeniden satamazsınız",
-    "version": "sürüm 2.0"
   },
   "language": {
     "label": "Dil"
