@@ -25,8 +25,6 @@ import Circuit from "./Circuit.jsx";
 import Graph from "./Graph.jsx";
 import Results from "./Results.jsx";
 import Settings from "./Settings.jsx";
-import Equations from "./Equations.jsx";
-import Tutorials from "./Tutorials.jsx";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
@@ -306,29 +304,6 @@ function App() {
                   chosenSparameter={chosenSparameter}
                   chosenNoiseParameter={chosenNoiseParameter}
                 />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid size={12}>
-            <Tutorials />
-          </Grid>
-          <Grid size={12}>
-            <Equations />
-          </Grid>
-          <Grid size={12}>
-            <Card>
-              <CardContent>
-                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                  <Button variant="outlined" onClick={() => setHelperModalOpen(true)}>
-                    {t("app.helperButton")}
-                  </Button>
-                  <Button variant="outlined" href="https://trgmc.net/" target="_blank" rel="noopener noreferrer">
-                    TRGMC
-                  </Button>
-                  <Button variant="outlined" href="https://onlinecircuitsolver.com/" target="_blank" rel="noopener noreferrer">
-                    Online Circuit Solver
-                  </Button>
-                </Box>
               </CardContent>
             </Card>
           </Grid>
