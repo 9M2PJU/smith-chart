@@ -54,6 +54,51 @@ const hamBandPresets = [
   { label: "70 cm (435 MHz)", frequency: 435, span: 20 },
 ];
 
+const antennaSamples = [
+  {
+    label: "20 m resonant dipole",
+    frequency: 14.2,
+    span: 0.35,
+    markers: [[72, 0]],
+  },
+  {
+    label: "40 m low dipole",
+    frequency: 7.15,
+    span: 0.3,
+    markers: [[38, -18]],
+  },
+  {
+    label: "40 m loaded vertical",
+    frequency: 7.15,
+    span: 0.3,
+    markers: [[18, -120]],
+  },
+  {
+    label: "20 m off-center-fed",
+    frequency: 14.2,
+    span: 0.35,
+    markers: [[200, -100]],
+  },
+  {
+    label: "20 m end-fed/random wire",
+    frequency: 14.2,
+    span: 0.35,
+    markers: [[450, 300]],
+  },
+  {
+    label: "40 m small magnetic loop",
+    frequency: 7.15,
+    span: 0.3,
+    markers: [[12, 45]],
+  },
+  {
+    label: "2 m quarter-wave whip",
+    frequency: 146,
+    span: 4,
+    markers: [[36, -18]],
+  },
+];
+
 function DisabledOverlay({ disabled, disabledText }) {
   const { t } = useTranslation();
   return (
@@ -86,6 +131,7 @@ export default function Settings({ settings, setSettings, usedF, chosenSparamete
   const [gainOutInt, setGainOutInt] = useState(0);
   const [NFInt, setNFInt] = useState(0);
   const [hamPresetIndex, setHamPresetIndex] = useState("5");
+  const [antennaSampleIndex, setAntennaSampleIndex] = useState("0");
 
   const userFrequency = settings.frequency * unitConverter[settings.frequencyUnit];
   const s2p = chosenSparameter ? "S22" in chosenSparameter : false;
@@ -115,6 +161,21 @@ export default function Settings({ settings, setSettings, usedF, chosenSparamete
       fSpanUnit: "MHz",
       fRes: 40,
       vswrCircles: [1.5, 2, 3],
+    }));
+  }
+
+  function applyAntennaSample() {
+    const sample = antennaSamples[Number(antennaSampleIndex)];
+    setSettings((current) => ({
+      ...current,
+      zo: 50,
+      frequency: sample.frequency,
+      frequencyUnit: "MHz",
+      fSpan: sample.span,
+      fSpanUnit: "MHz",
+      fRes: 40,
+      vswrCircles: [1.5, 2, 3],
+      zMarkers: sample.markers,
     }));
   }
 
@@ -198,7 +259,7 @@ export default function Settings({ settings, setSettings, usedF, chosenSparamete
             <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: "bold" }}>
               Amateur radio
             </Typography>
-            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, alignItems: "center" }}>
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, alignItems: "center", mb: 1 }}>
               <Select
                 size="small"
                 value={hamPresetIndex}
@@ -216,6 +277,23 @@ export default function Settings({ settings, setSettings, usedF, chosenSparamete
               </Button>
               <Button variant="outlined" size="small" onClick={applyHamDefaults} sx={{ flex: { xs: "1 1 12rem", sm: "0 0 auto" } }}>
                 50 Ω / VSWR circles
+              </Button>
+            </Box>
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, alignItems: "center" }}>
+              <Select
+                size="small"
+                value={antennaSampleIndex}
+                onChange={(e) => setAntennaSampleIndex(e.target.value)}
+                sx={{ minWidth: { xs: "100%", sm: 220 } }}
+              >
+                {antennaSamples.map((sample, index) => (
+                  <MenuItem key={sample.label} value={String(index)}>
+                    {sample.label}
+                  </MenuItem>
+                ))}
+              </Select>
+              <Button variant="contained" size="small" onClick={applyAntennaSample} sx={{ flex: { xs: "1 1 12rem", sm: "0 0 auto" } }}>
+                Apply antenna sample
               </Button>
             </Box>
           </Paper>
