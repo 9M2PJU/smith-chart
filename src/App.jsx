@@ -20,6 +20,7 @@ import CardContent from "@mui/material/CardContent";
 import ContentCopy from "@mui/icons-material/ContentCopy";
 import { ThemeProvider } from "@mui/material/styles";
 import NavBar from "./NavBar.jsx";
+import Footer from "./Footer.jsx";
 import Circuit from "./Circuit.jsx";
 import Graph from "./Graph.jsx";
 import Results from "./Results.jsx";
@@ -333,6 +334,7 @@ function App() {
           </Grid>
         </Grid>
       </Box>
+      <Footer />
     </ThemeProvider>
   );
 }
