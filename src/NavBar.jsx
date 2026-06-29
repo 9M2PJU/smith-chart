@@ -50,17 +50,19 @@ function NavBar() {
               flexGrow: 1,
               display: "flex",
               alignItems: "center",
+              flexWrap: "wrap",
               gap: 1,
               justifyContent: "space-between",
+              px: { xs: 1, sm: 2 },
             }}
           >
-            <Stack spacing={1} direction="row" sx={{ alignItems: "center" }}>
-              <img src={SmithChartSvg} alt="Smith Chart" width="50" height="50" style={{ marginRight: "10px", display: "block" }} />
+            <Stack spacing={1} direction="row" sx={{ alignItems: "center", minWidth: 0 }}>
+              <img src={SmithChartSvg} alt="Smith Chart" width="50" height="50" style={{ display: "block", flex: "0 0 auto" }} />
               <Typography variant="h6" component="div" sx={{ fontWeight: "bold", display: { xs: "none", sm: "none", md: "block" } }}>
                 {t("nav.title")}
               </Typography>
             </Stack>
-            <Stack spacing={1} direction={{ xs: "column", sm: "row" }} sx={{ alignItems: "center" }}>
+            <Stack spacing={1} direction="row" useFlexGap sx={{ alignItems: "center", justifyContent: "flex-end", flexWrap: "wrap", minWidth: 0 }}>
               <LanguageSwitcher />
               <Tooltip title={t("nav.copyUrl")} placement="bottom">
                 <IconButton

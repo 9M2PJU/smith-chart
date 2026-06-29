@@ -1163,8 +1163,8 @@ function Circuit({ userCircuit, setUserCircuit, frequency, setSettings, showIdea
           </Button>
         </Box>
       </Dialog>
-      <div style={{ display: "flex", width: "100%" }}>
-        <p>
+      <div style={{ display: "flex", width: "100%", minWidth: 0 }}>
+        <p style={{ overflowWrap: "anywhere" }}>
           {t("circuit.hint", {
             direction: s1pAtStart ? t("circuit.towardsTermination") : s1pIndex === -1 ? t("circuit.towardsBlackBox") : t("circuit.intoDp1"),
           })}

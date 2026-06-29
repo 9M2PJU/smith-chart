@@ -841,8 +841,8 @@ function Graph({
           enterTouchDelay={0} // show immediately on touch
           leaveTouchDelay={10000} // stay for 3 seconds
         >
-          <div ref={svgWrapper} style={{ textAlign: "center" }}>
-            <svg ref={svgRef} style={{ margin: "8px" }}>
+          <div ref={svgWrapper} style={{ textAlign: "center", width: "100%", minWidth: 0, overflow: "hidden" }}>
+            <svg ref={svgRef} style={{ margin: "8px", maxWidth: "100%" }}>
               <g id="topGroup" ref={topGroupRef}>
                 <g id="tracingArcs" ref={tracingArcsRef} />
                 <g id="labels" ref={labelsRef} />

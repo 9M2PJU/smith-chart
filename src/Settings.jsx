@@ -199,17 +199,22 @@ export default function Settings({ settings, setSettings, usedF, chosenSparamete
               Amateur radio
             </Typography>
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, alignItems: "center" }}>
-              <Select size="small" value={hamPresetIndex} onChange={(e) => setHamPresetIndex(e.target.value)} sx={{ minWidth: 180 }}>
+              <Select
+                size="small"
+                value={hamPresetIndex}
+                onChange={(e) => setHamPresetIndex(e.target.value)}
+                sx={{ minWidth: { xs: "100%", sm: 180 } }}
+              >
                 {hamBandPresets.map((preset, index) => (
                   <MenuItem key={preset.label} value={String(index)}>
                     {preset.label}
                   </MenuItem>
                 ))}
               </Select>
-              <Button variant="contained" size="small" onClick={applyHamPreset}>
+              <Button variant="contained" size="small" onClick={applyHamPreset} sx={{ flex: { xs: "1 1 12rem", sm: "0 0 auto" } }}>
                 Apply band
               </Button>
-              <Button variant="outlined" size="small" onClick={applyHamDefaults}>
+              <Button variant="outlined" size="small" onClick={applyHamDefaults} sx={{ flex: { xs: "1 1 12rem", sm: "0 0 auto" } }}>
                 50 Ω / VSWR circles
               </Button>
             </Box>

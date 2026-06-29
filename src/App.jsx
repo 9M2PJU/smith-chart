@@ -159,11 +159,11 @@ function App() {
           justifyContent: "space-between",
           gap: 1,
           color: radioColors.text,
-          mx: 3,
+          mx: { xs: 1, sm: 2, md: 3 },
           mt: 1,
         }}
       >
-        <Typography sx={{ flex: 1, minWidth: 240 }}>{t("app.intro")}</Typography>
+        <Typography sx={{ flex: 1, minWidth: 0, overflowWrap: "anywhere" }}>{t("app.intro")}</Typography>
         {isLargeScreen && (
           <ToggleButtonGroup
             value={stackedLayout ? "stacked" : "sideBySide"}
@@ -184,10 +184,10 @@ function App() {
         )}
       </Box>
       <Box sx={{ flexGrow: 1, mx: { xs: 0, sm: 1, lg: 2 }, mt: 1 }}>
-        <Grid container spacing={{ lg: 2, xs: 1 }}>
+        <Grid container spacing={{ lg: 2, xs: 1 }} sx={{ minWidth: 0 }}>
           <Grid size={circuitGridSize}>
-            <Card>
-              <CardContent>
+            <Card sx={{ minWidth: 0 }}>
+              <CardContent sx={{ p: { xs: 1, sm: 2 }, "&:last-child": { pb: { xs: 1, sm: 2 } } }}>
                 <Circuit
                   userCircuit={userCircuit}
                   setUserCircuit={setUserCircuit}
@@ -200,7 +200,7 @@ function App() {
             </Card>
           </Grid>
           <Grid size={graphGridSize}>
-            <Card sx={{ padding: 0 }}>
+            <Card sx={{ padding: 0, minWidth: 0 }}>
               <Graph
                 zResultsSrc={multiZResults}
                 zo={settingsFloat.zo}
@@ -225,8 +225,8 @@ function App() {
             </Card>
           </Grid>
           <Grid size={{ xs: 12, sm: 6, md: 6 }}>
-            <Card>
-              <CardContent>
+            <Card sx={{ minWidth: 0 }}>
+              <CardContent sx={{ p: { xs: 1, sm: 2 }, "&:last-child": { pb: { xs: 1, sm: 2 } } }}>
                 <Results
                   zProc={processedImpedanceResults}
                   spanResults={spanResults}
@@ -242,8 +242,8 @@ function App() {
             </Card>
           </Grid>
           <Grid size={{ xs: 12, sm: 6, md: 6 }}>
-            <Card>
-              <CardContent>
+            <Card sx={{ minWidth: 0 }}>
+              <CardContent sx={{ p: { xs: 1, sm: 2 }, "&:last-child": { pb: { xs: 1, sm: 2 } } }}>
                 <Settings
                   settings={settings}
                   setSettings={setSettings}
