@@ -57,8 +57,26 @@ function NavBar() {
             }}
           >
             <Stack spacing={1} direction="row" sx={{ alignItems: "center", minWidth: 0 }}>
-              <img src={SmithChartSvg} alt="Smith Chart" width="50" height="50" style={{ display: "block", flex: "0 0 auto" }} />
-              <Typography variant="h6" component="div" sx={{ fontWeight: "bold", display: { xs: "none", sm: "none", md: "block" } }}>
+              <Box
+                component="img"
+                src={SmithChartSvg}
+                alt="Smith Chart"
+                sx={{ display: "block", flex: "0 0 auto", width: { xs: 42, sm: 50 }, height: { xs: 42, sm: 50 } }}
+              />
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{
+                  fontWeight: "bold",
+                  display: { xs: "block", md: "none" },
+                  fontSize: { xs: "1rem", sm: "1.15rem" },
+                  lineHeight: 1,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                9M2PJU
+              </Typography>
+              <Typography variant="h6" component="div" sx={{ fontWeight: "bold", display: { xs: "none", md: "block" } }}>
                 {t("nav.title")}
               </Typography>
             </Stack>

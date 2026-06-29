@@ -34,7 +34,7 @@ export default function LanguageSwitcher() {
   const currentFlag = currentEntry?.flag;
 
   return (
-    <FormControl size="small" sx={{ minWidth: "11.5rem" }}>
+    <FormControl size="small" sx={{ minWidth: { xs: "8rem", sm: "11.5rem" } }}>
       <Select
         value={current}
         onChange={(e) => changeLanguage(e.target.value)}
