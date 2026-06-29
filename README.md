@@ -96,6 +96,8 @@ The GitHub Pages workflow was updated to use write permission for `GITHUB_TOKEN`
 
 This project is based on the original Online Smith Chart tool by **Will Kelsey**.
 
+Thank you to Will Kelsey for creating and sharing the original tool that made this amateur-radio adaptation possible.
+
 9M2PJU modifications adapt the tool for amateur radio antenna work, simplify the public interface, add ham-band and antenna examples, update the theme, and improve mobile/desktop usability.
 
 ## License
