@@ -290,6 +290,7 @@ function App() {
                   noiseArray={noiseArray}
                   RefIn={RefIn}
                   zo={settingsFloat.zo}
+                  frequency={numericalFrequency}
                 />
               </CardContent>
             </Card>

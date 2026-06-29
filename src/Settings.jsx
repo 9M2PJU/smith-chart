@@ -1,4 +1,6 @@
 import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Select from "@mui/material/Select";
@@ -36,6 +38,22 @@ function setUnit(value, field, setX) {
   });
 }
 
+const hamBandPresets = [
+  { label: "160 m (1.9 MHz)", frequency: 1.9, span: 0.2 },
+  { label: "80 m (3.65 MHz)", frequency: 3.65, span: 0.4 },
+  { label: "60 m (5.357 MHz)", frequency: 5.357, span: 0.1 },
+  { label: "40 m (7.15 MHz)", frequency: 7.15, span: 0.3 },
+  { label: "30 m (10.125 MHz)", frequency: 10.125, span: 0.1 },
+  { label: "20 m (14.2 MHz)", frequency: 14.2, span: 0.35 },
+  { label: "17 m (18.118 MHz)", frequency: 18.118, span: 0.1 },
+  { label: "15 m (21.225 MHz)", frequency: 21.225, span: 0.45 },
+  { label: "12 m (24.94 MHz)", frequency: 24.94, span: 0.1 },
+  { label: "10 m (28.5 MHz)", frequency: 28.5, span: 1.7 },
+  { label: "6 m (52 MHz)", frequency: 52, span: 4 },
+  { label: "2 m (146 MHz)", frequency: 146, span: 4 },
+  { label: "70 cm (435 MHz)", frequency: 435, span: 20 },
+];
+
 function DisabledOverlay({ disabled, disabledText }) {
   const { t } = useTranslation();
   return (
@@ -67,12 +85,38 @@ export default function Settings({ settings, setSettings, usedF, chosenSparamete
   const [gainInInt, setGainInInt] = useState(0);
   const [gainOutInt, setGainOutInt] = useState(0);
   const [NFInt, setNFInt] = useState(0);
+  const [hamPresetIndex, setHamPresetIndex] = useState("5");
 
   const userFrequency = settings.frequency * unitConverter[settings.frequencyUnit];
   const s2p = chosenSparameter ? "S22" in chosenSparameter : false;
   const gInMax = s2p ? 10 * Math.log10(1 / (1 - chosenSparameter.S11.magnitude ** 2)) : null;
   const gOutMax = s2p ? 10 * Math.log10(1 / (1 - chosenSparameter.S22.magnitude ** 2)) : null;
   const NFMin = chosenNoiseParameter ? chosenNoiseParameter.fmin : null;
+
+  function applyHamDefaults() {
+    setSettings((current) => ({
+      ...current,
+      zo: 50,
+      frequencyUnit: "MHz",
+      fSpanUnit: "MHz",
+      fRes: Math.max(current.fRes, 40),
+      vswrCircles: [1.5, 2, 3],
+    }));
+  }
+
+  function applyHamPreset() {
+    const preset = hamBandPresets[Number(hamPresetIndex)];
+    setSettings((current) => ({
+      ...current,
+      zo: 50,
+      frequency: preset.frequency,
+      frequencyUnit: "MHz",
+      fSpan: preset.span,
+      fSpanUnit: "MHz",
+      fRes: 40,
+      vswrCircles: [1.5, 2, 3],
+    }));
+  }
 
   return (
     <>
@@ -148,6 +192,28 @@ export default function Settings({ settings, setSettings, usedF, chosenSparamete
               },
             }}
           />
+        </Grid>
+        <Grid size={12}>
+          <Paper variant="outlined" sx={{ p: 1.5, backgroundColor: "#effffd" }}>
+            <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: "bold" }}>
+              Amateur radio
+            </Typography>
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, alignItems: "center" }}>
+              <Select size="small" value={hamPresetIndex} onChange={(e) => setHamPresetIndex(e.target.value)} sx={{ minWidth: 180 }}>
+                {hamBandPresets.map((preset, index) => (
+                  <MenuItem key={preset.label} value={String(index)}>
+                    {preset.label}
+                  </MenuItem>
+                ))}
+              </Select>
+              <Button variant="contained" size="small" onClick={applyHamPreset}>
+                Apply band
+              </Button>
+              <Button variant="outlined" size="small" onClick={applyHamDefaults}>
+                50 Ω / VSWR circles
+              </Button>
+            </Box>
+          </Paper>
         </Grid>
         <Grid size={{ xs: 12, lg: 6 }} sx={{ display: "flex" }}>
           <CustomMarkersTable settings={settings} setSettings={setSettings} />

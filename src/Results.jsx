@@ -7,7 +7,7 @@ import UplotReact from "uplot-react";
 import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import { processImpedance, rectangularToPolar, unitConverter } from "./commonFunctions";
+import { processImpedance, rectangularToPolar, unitConverter, zToRefl } from "./commonFunctions";
 
 function ImpedanceRes({ type, zStr, zPolarStr }) {
   return (
@@ -424,7 +424,99 @@ function RPlot({ RefIn, options, freqUnit, title }) {
   );
 }
 
-export default function Results({ zProc, spanResults, freqUnit, sParameters, gainResults, noiseArray, RefIn, zo }) {
+function vswrFromImpedance(z, zo) {
+  const reflection = zToRefl(z, { real: zo, imaginary: 0 });
+  const { magnitude } = rectangularToPolar(reflection);
+  if (magnitude >= 1) return Infinity;
+  return (1 + magnitude) / (1 - magnitude);
+}
+
+function formatFrequency(frequency, freqUnit) {
+  return `${(frequency / unitConverter[freqUnit]).toLocaleString(undefined, { maximumFractionDigits: 4 })} ${freqUnit}`;
+}
+
+function formatVswr(vswr) {
+  if (!Number.isFinite(vswr)) return "∞";
+  return vswr.toFixed(2);
+}
+
+function bandwidthText(points, maxVswr, freqUnit) {
+  const inRange = points.filter((point) => point.vswr <= maxVswr);
+  if (inRange.length === 0) return "None in span";
+  const low = inRange[0].frequency;
+  const high = inRange[inRange.length - 1].frequency;
+  const width = (high - low) / unitConverter[freqUnit];
+  return `${formatFrequency(low, freqUnit)} - ${formatFrequency(high, freqUnit)} (${width.toLocaleString(undefined, { maximumFractionDigits: 4 })} ${freqUnit})`;
+}
+
+function getAntennaSummary(nominalSpan, zo, freqUnit, frequency) {
+  const points = Object.keys(nominalSpan)
+    .sort((a, b) => Number(a) - Number(b))
+    .map((f) => ({
+      frequency: Number(f),
+      z: nominalSpan[f].z,
+      vswr: vswrFromImpedance(nominalSpan[f].z, zo),
+    }));
+
+  if (points.length === 0) return null;
+
+  const target = points.reduce(
+    (closest, point) => (Math.abs(point.frequency - frequency) < Math.abs(closest.frequency - frequency) ? point : closest),
+    points[0],
+  );
+  const best = points.reduce((lowest, point) => (point.vswr < lowest.vswr ? point : lowest), points[0]);
+  const absReactance = Math.abs(target.z.imaginary);
+  const match = target.vswr <= 2 ? "Good match" : target.vswr <= 3 ? "Usable with tuner" : "Needs matching";
+  const reactance = absReactance < 1 ? "Near resonance" : target.z.imaginary < 0 ? "Capacitive" : "Inductive";
+
+  return {
+    match,
+    reactance,
+    currentVswr: formatVswr(target.vswr),
+    currentFrequency: formatFrequency(target.frequency, freqUnit),
+    bestVswr: `${formatVswr(best.vswr)} @ ${formatFrequency(best.frequency, freqUnit)}`,
+    bandwidth2: bandwidthText(points, 2, freqUnit),
+    bandwidth3: bandwidthText(points, 3, freqUnit),
+  };
+}
+
+function AntennaMetric({ label, value }) {
+  return (
+    <Grid size={{ xs: 12, sm: 6 }}>
+      <Box sx={{ border: "1px solid #ccc", borderRadius: 1, p: 1, height: "100%" }}>
+        <Typography variant="caption" sx={{ color: "rgb(82, 91, 101)", display: "block" }}>
+          {label}
+        </Typography>
+        <Typography variant="body2" sx={{ overflowWrap: "anywhere" }}>
+          {value}
+        </Typography>
+      </Box>
+    </Grid>
+  );
+}
+
+function AntennaSummary({ summary }) {
+  if (!summary) return null;
+  return (
+    <Grid size={12}>
+      <Box sx={{ border: "1px solid #ccc", borderRadius: 1, p: 1.5, mt: 1, backgroundColor: "#effffd" }}>
+        <Typography variant="h6" sx={{ mb: 1 }}>
+          Antenna
+        </Typography>
+        <Grid container spacing={1}>
+          <AntennaMetric label="Match" value={summary.match} />
+          <AntennaMetric label="At frequency" value={`${summary.currentVswr} VSWR @ ${summary.currentFrequency}`} />
+          <AntennaMetric label="Reactance" value={summary.reactance} />
+          <AntennaMetric label="Best VSWR" value={summary.bestVswr} />
+          <AntennaMetric label="2:1 bandwidth" value={summary.bandwidth2} />
+          <AntennaMetric label="3:1 bandwidth" value={summary.bandwidth3} />
+        </Grid>
+      </Box>
+    </Grid>
+  );
+}
+
+export default function Results({ zProc, spanResults, freqUnit, sParameters, gainResults, noiseArray, RefIn, zo, frequency }) {
   const { t, i18n } = useTranslation();
   const { zStr, zPolarStr, refStr, refPolarStr, vswr, qFactor } = zProc;
   const containerRef = useRef();
@@ -488,6 +580,7 @@ export default function Results({ zProc, spanResults, freqUnit, sParameters, gai
   var s21 = [];
   //FIXME - move this to a separate function so we can do unit testing
   const nominalSpan = spanResults[spanResults.length - 1];
+  const antennaSummary = getAntennaSummary(nominalSpan, zo, freqUnit, frequency);
   const sortedSpanFrequencies = Object.keys(nominalSpan).sort((a, b) => a - b);
   for (const f of sortedSpanFrequencies) {
     const { refReal, refImag } = processImpedance(nominalSpan[f].z, zo);
@@ -503,7 +596,8 @@ export default function Results({ zProc, spanResults, freqUnit, sParameters, gai
   var maxF = 0;
   var db3_l = -1;
   var db3_m = -1;
-  var i, maxIndex;
+  var i,
+    maxIndex = 0;
   for (i = 0; i < absSpanFrequencies.length; i++) {
     if (s21[i] > maxS21) {
       maxIndex = i;
@@ -572,6 +666,7 @@ export default function Results({ zProc, spanResults, freqUnit, sParameters, gai
           <Grid size={{ xs: 12, sm: 12, md: 12, lg: 3 }} sx={{ display: "flex" }}>
             <MiniRes type={t("results.qFactor")} res={qFactor} />
           </Grid>
+          <AntennaSummary summary={antennaSummary} />
         </Grid>
 
         <div ref={containerRef} style={{ width: "100%", marginTop: "30px" }}>
